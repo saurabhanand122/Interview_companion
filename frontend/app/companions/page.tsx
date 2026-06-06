@@ -28,8 +28,8 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
         <main className="flex flex-col gap-8">
             <section className="flex justify-between gap-4 items-center max-sm:items-start max-sm:flex-col border-b border-border/40 pb-5">
                 <div className="flex flex-col gap-1.5">
-                    <h1 className="text-3xl font-extrabold tracking-tight">Companion Library</h1>
-                    <p className="text-muted-foreground text-sm font-medium">Search and filter companions by topic or subject</p>
+                    <h1 className="text-3xl font-extrabold tracking-tight">Interviewer Library</h1>
+                    <p className="text-muted-foreground text-sm font-medium">Search and filter interviewers by topic or subject</p>
                 </div>
                 <div className="flex gap-3 items-center w-full sm:w-auto">
                     <SearchInput />
@@ -47,9 +47,9 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
                         />
                     ))
                 ) : (
-                    <div className="col-span-full flex flex-col items-center justify-center py-20 text-center border border-dashed border-border/85 rounded-2xl bg-card/40 backdrop-blur-md">
-                        <p className="text-lg font-bold text-foreground">No Companions Found</p>
-                        <p className="text-sm text-muted-foreground mt-1">Try resetting your filters or search query to find more companions</p>
+                    <div className="col-span-full flex flex-col items-center justify-center py-20 text-center border border-dashed border-border/85 rounded-2xl bg-card/45 backdrop-blur-md">
+                        <p className="text-lg font-bold text-foreground">No Interviewers Found</p>
+                        <p className="text-sm text-muted-foreground mt-1">Try resetting your filters or search query to find more interviewers</p>
                     </div>
                 )}
             </section>

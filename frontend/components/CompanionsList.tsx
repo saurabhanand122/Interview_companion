@@ -48,14 +48,14 @@ const CompanionsList = ({
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {companions.map(({id, subject, name, topic, duration}) => {
+                            {companions.map(({id, subject, name, topic, duration}, idx) => {
                                 const subjColor = getSubjectColor(subject) || "#7c3aed";
                                 const badgeBg = `${subjColor}15`;
                                 const badgeBorder = `${subjColor}35`;
 
                                 return (
                                     <TableRow 
-                                        key={id} 
+                                        key={`${id}-${idx}`} 
                                         className="group hover:bg-muted/30 transition-colors border-b border-border/40 last:border-0"
                                     >
                                         <TableCell className="py-4 pl-4">

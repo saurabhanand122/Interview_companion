@@ -1,4 +1,4 @@
-  <h3 align="center">SaaS App - LMS with Next.js, Supabase & Payments</h3>
+  <h3 align="center">AI Interview Companion</h3>
 
    <div align="center">
     
@@ -14,11 +14,9 @@
 5. 🔗 [Assets](#links)
 6. 🚀 [More](#more)
 
-## 🚨 Tutorial
-
 ## <a name="introduction">🤖 Introduction</a>
 
-Create an LMS SaaS app from scratch featuring user authentication, subscriptions, and payments using Next.js, Supabase, and Stripe! You'll build and deploy a real-time teaching platform with Vapi, integrate an AI vocal agent, and deliver seamless, interactive learning sessions.
+An AI-powered interview preparation platform featuring mock interviews, real-time vocal feedback, performance tracking, streaks, analytics, and customized interviewers built with Next.js, Supabase, Vapi, and Clerk!
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -80,8 +78,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/Sourav-Parida/AskMate_AI
-cd saas-app
+git clone https://github.com/saurabhanand122/Interview_companion.git
+cd Interview_companion
 ```
 
 **Installation**
