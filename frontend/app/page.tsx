@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import StatsSection from "@/components/StatsSection";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import DeveloperProfile from "@/components/DeveloperProfile";
+import SuccessStories from "@/components/SuccessStories";
 import Testimonials from "@/components/Testimonials";
 import { getAllCompanions, getRecentSessions, getBookmarkedCompanions } from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
@@ -27,7 +28,7 @@ export default async function Page() {
     }
 
     return (
-        <main className="flex flex-col gap-16 pb-20 relative overflow-hidden bg-slate-950/20">
+        <main className="flex flex-col gap-16 pb-20 relative overflow-hidden bg-slate-950/5">
             {/* Ambient Background Aura Glows */}
             <div className="absolute top-[10%] left-[5%] size-96 rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
             <div className="absolute bottom-[20%] right-[5%] size-96 rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none" />
@@ -44,7 +45,7 @@ export default async function Page() {
             {/* 4. Popular Interviewers Grid */}
             <div className="flex flex-col gap-8 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col gap-1.5 border-b border-border/40 pb-4 text-center md:text-left">
-                    <h2 className="text-3xl font-extrabold tracking-tight text-white">Popular AI Interviewers</h2>
+                    <h2 className="text-3xl font-extrabold tracking-tight text-foreground">Popular AI Interviewers</h2>
                     <p className="text-muted-foreground text-sm font-medium">Select an interviewer avatar to begin your live vocal practice session</p>
                 </div>
 
@@ -63,15 +64,18 @@ export default async function Page() {
             {/* 5. Developer Section */}
             <DeveloperProfile />
 
-            {/* 6. Testimonials Section */}
+            {/* 6. Success Stories Section */}
+            <SuccessStories />
+
+            {/* 7. Testimonials Section */}
             <Testimonials />
 
-            {/* 7. Recent Activity & CTA */}
-            <section className="home-section gap-6 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            {/* 8. Recent Activity & CTA */}
+            <section className="home-section max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8">
                 <CompanionsList
                     title="Recent session activity logs"
                     companions={recentSessionsCompanions}
-                    classNames="w-2/3 max-lg:w-full shrink-0 border border-border bg-slate-900/30 backdrop-blur-md"
+                    classNames="w-full border border-border bg-card/40 backdrop-blur-md"
                 />
                 <CTA />
             </section>

@@ -234,27 +234,27 @@ export default function Page() {
             </div>
 
             {/* Right Form Card Pane */}
-            <div className="flex-1 flex items-center justify-center bg-slate-950/65 backdrop-blur-xl border border-border/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div className="flex-1 flex items-center justify-center bg-card/75 backdrop-blur-xl border border-border/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 size-48 rounded-full bg-violet-600/5 blur-3xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 size-48 rounded-full bg-emerald-600/5 blur-3xl pointer-events-none" />
                 
                 <div className="w-full max-w-md z-10 flex flex-col gap-6">
                     {/* Responsive Title for Mobile only */}
                     <div className="lg:hidden text-center flex flex-col gap-2 mb-2">
-                        <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-transparent">
+                        <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-300 bg-clip-text text-transparent">
                             AI Interview Companion
                         </h2>
-                        <p className="text-xs text-muted-foreground">Voice-to-voice mock prep with real feedback</p>
+                        <p className="text-xs text-muted-foreground font-semibold">Voice-to-voice mock prep with real feedback</p>
                     </div>
 
                     {!pendingVerification ? (
                         <>
                             {/* Card Header & Switcher */}
-                            <div className="flex flex-col gap-2.5">
+                            <div className="flex flex-col gap-2">
                                 <h3 className="text-2xl font-extrabold text-foreground tracking-tight">
                                     {activeTab === 'signin' ? 'Welcome Back' : 'Create Account'}
                                 </h3>
-                                <p className="text-xs text-muted-foreground">
+                                <p className="text-xs text-muted-foreground font-medium">
                                     {activeTab === 'signin' 
                                         ? 'Access your analytics, streaks, and simulated interviews.' 
                                         : 'Unlock premium AI interviewers, feedback templates, and tracking charts.'
@@ -263,13 +263,13 @@ export default function Page() {
                             </div>
 
                             {/* Custom tab headers */}
-                            <div className="grid grid-cols-2 p-1 bg-slate-900 border border-border rounded-xl">
+                            <div className="grid grid-cols-2 p-1 bg-muted border border-border rounded-xl">
                                 <button
                                     onClick={() => { setActiveTab('signin'); setError(''); }}
                                     className={`py-2 text-xs font-bold rounded-lg cursor-pointer transition-all ${
                                         activeTab === 'signin' 
-                                            ? 'bg-slate-800 text-white shadow-sm' 
-                                            : 'text-muted-foreground hover:text-white'
+                                            ? 'bg-card text-foreground shadow-xs' 
+                                            : 'text-muted-foreground hover:text-foreground'
                                     }`}
                                 >
                                     Sign In
@@ -278,8 +278,8 @@ export default function Page() {
                                     onClick={() => { setActiveTab('signup'); setError(''); }}
                                     className={`py-2 text-xs font-bold rounded-lg cursor-pointer transition-all ${
                                         activeTab === 'signup' 
-                                            ? 'bg-slate-800 text-white shadow-sm' 
-                                            : 'text-muted-foreground hover:text-white'
+                                            ? 'bg-card text-foreground shadow-xs' 
+                                            : 'text-muted-foreground hover:text-foreground'
                                     }`}
                                 >
                                     Register
@@ -288,7 +288,7 @@ export default function Page() {
 
                             {/* Error Alert */}
                             {error && (
-                                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs flex items-start gap-2.5">
+                                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 dark:text-red-400 rounded-xl text-xs flex items-start gap-2.5">
                                     <ShieldAlert className="size-4 shrink-0 mt-0.5" />
                                     <span>{error}</span>
                                 </div>
@@ -299,7 +299,7 @@ export default function Page() {
                                 <div className="flex flex-col gap-1.5">
                                     <label className="text-xs font-semibold text-muted-foreground" htmlFor="email">Email Address</label>
                                     <div className="relative">
-                                        <Mail className="absolute left-3 top-3 size-4 text-muted-foreground" />
+                                        <Mail className="absolute left-3 top-3.5 size-4 text-muted-foreground" />
                                         <input
                                             id="email"
                                             type="email"
@@ -307,7 +307,7 @@ export default function Page() {
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="you@example.com"
                                             required
-                                            className="w-full bg-slate-900 border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-2.5 pl-10 pr-4 text-xs font-medium text-white transition-colors"
+                                            className="w-full bg-background border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-2.5 pl-10 pr-4 text-xs font-medium text-foreground transition-colors"
                                         />
                                     </div>
                                 </div>
@@ -315,7 +315,7 @@ export default function Page() {
                                 <div className="flex flex-col gap-1.5">
                                     <label className="text-xs font-semibold text-muted-foreground" htmlFor="password">Password</label>
                                     <div className="relative">
-                                        <Lock className="absolute left-3 top-3 size-4 text-muted-foreground" />
+                                        <Lock className="absolute left-3 top-3.5 size-4 text-muted-foreground" />
                                         <input
                                             id="password"
                                             type={showPassword ? 'text' : 'password'}
@@ -323,18 +323,18 @@ export default function Page() {
                                             onChange={(e) => setPassword(e.target.value)}
                                             placeholder="••••••••"
                                             required
-                                            className="w-full bg-slate-900 border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-2.5 pl-10 pr-10 text-xs font-medium text-white transition-colors"
+                                            className="w-full bg-background border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-2.5 pl-10 pr-10 text-xs font-medium text-foreground transition-colors"
                                         />
                                         <button
                                             type="button"
                                             onClick={() => setShowPassword(!showPassword)}
-                                            className="absolute right-3 top-2.5 text-muted-foreground hover:text-white cursor-pointer"
+                                            className="absolute right-3 top-3 text-muted-foreground hover:text-foreground cursor-pointer"
                                         >
                                             {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                                         </button>
                                     </div>
                                     {activeTab === 'signup' && (
-                                        <p className="text-[10px] text-muted-foreground">Minimum 8 characters containing letters and numbers.</p>
+                                        <p className="text-[10px] text-muted-foreground font-medium">Minimum 8 characters containing letters and numbers.</p>
                                     )}
                                 </div>
 
@@ -366,7 +366,7 @@ export default function Page() {
                                 <button
                                     type="button"
                                     onClick={() => handleOAuth('oauth_google')}
-                                    className="flex items-center justify-center gap-2 py-2.5 border border-border hover:bg-slate-900/60 rounded-xl text-xs font-bold text-white cursor-pointer transition-all hover:border-violet-500/20"
+                                    className="flex items-center justify-center gap-2 py-2.5 border border-border hover:bg-muted rounded-xl text-xs font-bold text-foreground cursor-pointer transition-all hover:border-violet-500/20"
                                 >
                                     {/* Google SVG */}
                                     <svg className="size-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -381,7 +381,7 @@ export default function Page() {
                                 <button
                                     type="button"
                                     onClick={() => handleOAuth('oauth_github')}
-                                    className="flex items-center justify-center gap-2 py-2.5 border border-border hover:bg-slate-900/60 rounded-xl text-xs font-bold text-white cursor-pointer transition-all hover:border-violet-500/20"
+                                    className="flex items-center justify-center gap-2 py-2.5 border border-border hover:bg-muted rounded-xl text-xs font-bold text-foreground cursor-pointer transition-all hover:border-violet-500/20"
                                 >
                                     <Github className="size-4 shrink-0" />
                                     <span>GitHub</span>
@@ -393,16 +393,16 @@ export default function Page() {
                         <form onSubmit={handleVerificationSubmit} className="flex flex-col gap-5">
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-2xl font-extrabold text-foreground tracking-tight flex items-center gap-2">
-                                    <UserCheck className="size-6 text-violet-400" />
+                                    <UserCheck className="size-6 text-violet-500 dark:text-violet-400" />
                                     <span>Verify Email</span>
                                 </h3>
-                                <p className="text-xs text-muted-foreground">
-                                    We sent a verification code to <span className="font-semibold text-white">{email}</span>. Please enter it below.
+                                <p className="text-xs text-muted-foreground font-semibold">
+                                    We sent a verification code to <span className="font-bold text-foreground">{email}</span>. Please enter it below.
                                 </p>
                             </div>
 
                             {error && (
-                                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs flex items-start gap-2.5">
+                                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 dark:text-red-400 rounded-xl text-xs flex items-start gap-2.5">
                                     <ShieldAlert className="size-4 shrink-0 mt-0.5" />
                                     <span>{error}</span>
                                 </div>
@@ -417,7 +417,7 @@ export default function Page() {
                                     onChange={(e) => setVerificationCode(e.target.value)}
                                     placeholder="123456"
                                     required
-                                    className="w-full bg-slate-900 border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-3 text-center text-lg font-bold tracking-widest text-white transition-colors"
+                                    className="w-full bg-background border border-border hover:border-border/80 focus:border-violet-500 focus:outline-none rounded-xl py-3 text-center text-lg font-bold tracking-widest text-foreground transition-colors"
                                 />
                             </div>
 
@@ -425,7 +425,7 @@ export default function Page() {
                                 type="submit"
                                 disabled={loading}
                                 className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold py-2.5 rounded-xl text-xs cursor-pointer flex items-center justify-center gap-2 transition-all disabled:opacity-75 disabled:pointer-events-none"
-                            >
+                              >
                                 {loading ? (
                                     <div className="size-4.5 rounded-full border-2 border-t-white border-white/20 animate-spin" />
                                 ) : (
@@ -442,7 +442,7 @@ export default function Page() {
                                     setPendingVerification(false);
                                     setError('');
                                 }}
-                                className="text-xs text-muted-foreground hover:text-white transition-colors text-center cursor-pointer font-medium"
+                                className="text-xs text-muted-foreground hover:text-foreground transition-colors text-center cursor-pointer font-bold"
                             >
                                 Back to Registration
                             </button>

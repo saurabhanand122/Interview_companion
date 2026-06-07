@@ -12,7 +12,10 @@ import { cn } from '@/lib/utils';
 const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Interviewers', href: '/companions' },
-    { label: 'My Journey', href: '/my-journey' },
+    { label: 'About', href: '/about' },
+    { label: 'Journey', href: '/journey' },
+    { label: 'Experience', href: '/experience' },
+    { label: 'Contact Us', href: '/contact' },
 ];
 
 const Navbar = () => {
@@ -21,7 +24,7 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-slate-950/70 backdrop-blur-xl transition-all">
+        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl transition-all">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 
                 {/* Logo and Branding */}
@@ -33,14 +36,14 @@ const Navbar = () => {
                             width={32}
                             height={32}
                         />
-                        <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-transparent">
+                        <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-300 bg-clip-text text-transparent">
                             AI Interview Companion
                         </span>
                     </div>
                 </Link>
 
                 {/* Desktop Navigation Items */}
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden lg:flex items-center gap-6">
                     {navItems.map(({ label, href }) => {
                         const isActive = pathname === href;
                         return (
@@ -59,19 +62,33 @@ const Navbar = () => {
                             </Link>
                         );
                     })}
+                    <SignedIn>
+                        <Link
+                            href="/my-journey"
+                            className={cn(
+                                'text-xs font-bold transition-colors py-1 relative hover:text-primary tracking-wide uppercase',
+                                pathname === '/my-journey' ? 'text-primary font-extrabold' : 'text-muted-foreground'
+                            )}
+                        >
+                            Dashboard
+                            {pathname === '/my-journey' && (
+                                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full animate-in fade-in zoom-in duration-300" />
+                            )}
+                        </Link>
+                    </SignedIn>
                 </nav>
 
                 {/* Right Controls & Auth buttons */}
-                <div className="hidden md:flex items-center gap-4">
+                <div className="hidden lg:flex items-center gap-4">
                     <button 
                         onClick={toggleTheme}
-                        className="p-2 rounded-xl bg-slate-900 border border-border hover:bg-slate-800 transition-all duration-300 flex items-center justify-center cursor-pointer text-foreground"
+                        className="p-2 rounded-xl bg-card border border-border hover:bg-muted transition-all duration-300 flex items-center justify-center cursor-pointer text-foreground shadow-xs"
                         aria-label="Toggle theme"
                     >
                         {theme === 'dark' ? (
                             <Sun className="size-4.5 text-yellow-400 transition-transform duration-500 hover:rotate-45" />
                         ) : (
-                            <Moon className="size-4.5 text-slate-300 transition-transform duration-500 hover:-rotate-12" />
+                            <Moon className="size-4.5 text-slate-500 transition-transform duration-500 hover:-rotate-12" />
                         )}
                     </button>
 
@@ -94,16 +111,16 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu Actions */}
-                <div className="flex md:hidden items-center gap-3">
+                <div className="flex lg:hidden items-center gap-3">
                     <button 
                         onClick={toggleTheme}
-                        className="p-2 rounded-xl bg-slate-900 border border-border flex items-center justify-center cursor-pointer text-foreground"
+                        className="p-2 rounded-xl bg-card border border-border flex items-center justify-center cursor-pointer text-foreground"
                         aria-label="Toggle theme"
                     >
                         {theme === 'dark' ? (
                             <Sun className="size-4 text-yellow-400" />
                         ) : (
-                            <Moon className="size-4 text-slate-300" />
+                            <Moon className="size-4 text-slate-500" />
                         )}
                     </button>
 
@@ -117,17 +134,17 @@ const Navbar = () => {
 
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="p-2 rounded-xl bg-slate-900 border border-border flex items-center justify-center cursor-pointer text-muted-foreground hover:text-white"
+                        className="p-2 rounded-xl bg-card border border-border flex items-center justify-center cursor-pointer text-muted-foreground hover:text-foreground"
                         aria-label="Toggle menu"
                     >
-                        {mobileMenuOpen ? <X className="size-4.5 text-white" /> : <Menu className="size-4.5" />}
+                        {mobileMenuOpen ? <X className="size-4.5" /> : <Menu className="size-4.5" />}
                     </button>
                 </div>
             </div>
 
             {/* Mobile Dropdown Menu Drawer */}
             {mobileMenuOpen && (
-                <div className="md:hidden border-t border-border/40 bg-slate-950/95 backdrop-blur-xl px-4 py-5 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-3 duration-250">
+                <div className="lg:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl px-4 py-5 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-3 duration-250">
                     <nav className="flex flex-col gap-3">
                         {navItems.map(({ label, href }) => {
                             const isActive = pathname === href;
@@ -140,13 +157,27 @@ const Navbar = () => {
                                         'text-sm font-bold py-2 px-3.5 rounded-xl transition-all',
                                         isActive 
                                             ? 'bg-violet-600/10 text-primary font-extrabold border-l-2 border-primary' 
-                                            : 'text-muted-foreground hover:bg-slate-900 hover:text-white'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                                     )}
                                 >
                                     {label}
                                 </Link>
                             );
                         })}
+                        <SignedIn>
+                            <Link
+                                href="/my-journey"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={cn(
+                                    'text-sm font-bold py-2 px-3.5 rounded-xl transition-all',
+                                    pathname === '/my-journey'
+                                        ? 'bg-violet-600/10 text-primary font-extrabold border-l-2 border-primary'
+                                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                                )}
+                            >
+                                Dashboard
+                            </Link>
+                        </SignedIn>
                     </nav>
 
                     <SignedOut>

@@ -44,14 +44,14 @@ export default function Hero() {
 
                 <motion.h1 
                     variants={fadeInUp}
-                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground"
                 >
                     Ace Your Next Tech Interview with <span className="text-gradient-primary">Voice AI Avatars</span>
                 </motion.h1>
 
                 <motion.p 
                     variants={fadeInUp}
-                    className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-xl"
+                    className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-xl font-medium"
                 >
                     Practice programming logic, system design fundamentals, and behavioral questions. Experience low-latency spoken conversations with custom AI interviewers and receive instant visual performance analytics.
                 </motion.p>
@@ -67,8 +67,8 @@ export default function Hero() {
                         </button>
                     </Link>
                     <Link href="/companions/new" className="w-full sm:w-auto">
-                        <button className="w-full sm:w-auto border border-border/80 bg-slate-950 hover:bg-slate-900 text-white font-bold px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                            <Bot className="size-4 text-violet-400" />
+                        <button className="w-full sm:w-auto border border-border bg-card hover:bg-muted text-foreground font-bold px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
+                            <Bot className="size-4 text-primary" />
                             <span>Build Custom Interviewer</span>
                         </button>
                     </Link>
@@ -82,28 +82,28 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                 className="flex-1 w-full flex justify-center items-center z-10"
             >
-                <div className="relative w-full max-w-md bg-slate-900/60 border border-border/80 rounded-3xl p-6 shadow-2xl backdrop-blur-xl flex flex-col gap-6 overflow-hidden">
+                <div className="relative w-full max-w-md bg-card/65 border border-border/80 rounded-3xl p-6 shadow-2xl backdrop-blur-xl flex flex-col gap-6 overflow-hidden">
                     {/* Glowing card highlights */}
                     <div className="absolute -top-12 -right-12 size-36 bg-violet-600/10 rounded-full blur-2xl pointer-events-none animate-pulse" />
                     
                     {/* Mock Avatar State header */}
                     <div className="flex items-center justify-between border-b border-border/40 pb-4">
                         <div className="flex items-center gap-3">
-                            <div className="relative">
+                          <div className="relative">
                                 <div className="absolute inset-0 bg-violet-500/20 rounded-full animate-ping pointer-events-none" />
                                 <div className="size-11 rounded-full bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center border border-white/10 relative">
                                     <Bot className="size-5.5 text-white" />
                                 </div>
                             </div>
                             <div>
-                                <h4 className="font-extrabold text-sm text-white">Codey the Architect</h4>
-                                <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1.5">
-                                    <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <h4 className="font-extrabold text-sm text-foreground">Codey the Architect</h4>
+                                <span className="text-[10px] text-emerald-500 dark:text-emerald-400 font-bold flex items-center gap-1.5">
+                                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                                     Active voice session
                                 </span>
                             </div>
                         </div>
-                        <div className="px-2.5 py-1 bg-slate-950 border border-border rounded-lg text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                        <div className="px-2.5 py-1 bg-muted/50 border border-border rounded-lg text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                             Vapi AI
                         </div>
                     </div>
@@ -114,7 +114,7 @@ export default function Hero() {
                         
                         <div className="size-20 rounded-full bg-violet-500/10 border border-violet-500/25 flex items-center justify-center relative">
                             <div className="absolute inset-2 bg-violet-500/15 rounded-full animate-pulse" />
-                            <Mic className="size-8 text-violet-400" />
+                            <Mic className="size-8 text-primary" />
                         </div>
                         
                         {/* Audio Wave lines simulating response */}
@@ -122,7 +122,7 @@ export default function Hero() {
                             {[0.4, 0.7, 0.5, 0.9, 0.3, 0.8, 0.4, 0.6, 0.8, 0.3, 0.7, 0.5, 0.9, 0.4].map((scale, i) => (
                                 <span 
                                     key={i} 
-                                    className="w-1 bg-violet-500 rounded-full transition-all duration-300"
+                                    className="w-1 bg-primary rounded-full transition-all duration-300"
                                     style={{ 
                                         height: `${scale * 100}%`,
                                         opacity: 0.3 + (scale * 0.7),
@@ -136,18 +136,18 @@ export default function Hero() {
 
                     {/* Telemetry diagnostics cards */}
                     <div className="grid grid-cols-2 gap-3 mt-1">
-                        <div className="p-3 bg-slate-950 border border-border/80 rounded-xl flex items-center gap-2.5">
-                            <Brain className="size-4.5 text-pink-400 shrink-0" />
+                        <div className="p-3 bg-muted/50 border border-border/80 rounded-xl flex items-center gap-2.5">
+                            <Brain className="size-4.5 text-pink-500 dark:text-pink-400 shrink-0" />
                             <div>
                                 <span className="block text-[8px] uppercase tracking-wider text-muted-foreground font-bold">Logic check</span>
-                                <span className="font-extrabold text-xs text-white">94% Score</span>
+                                <span className="font-extrabold text-xs text-foreground">94% Score</span>
                             </div>
                         </div>
-                        <div className="p-3 bg-slate-950 border border-border/80 rounded-xl flex items-center gap-2.5">
-                            <Trophy className="size-4.5 text-amber-400 shrink-0" />
+                        <div className="p-3 bg-muted/50 border border-border/80 rounded-xl flex items-center gap-2.5">
+                            <Trophy className="size-4.5 text-amber-500 shrink-0" />
                             <div>
                                 <span className="block text-[8px] uppercase tracking-wider text-muted-foreground font-bold">Pacing rate</span>
-                                <span className="font-extrabold text-xs text-white">Stable</span>
+                                <span className="font-extrabold text-xs text-foreground">Stable</span>
                             </div>
                         </div>
                     </div>
