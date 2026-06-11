@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "framework": "nextjs",
   "build": {
     "env": {
       "SENTRY_SKIP_INJECT": "1",
