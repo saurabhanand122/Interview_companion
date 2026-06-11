@@ -6,6 +6,17 @@ import { useSignIn, useSignUp } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Sparkles, Mic, Brain, Github, Mail, Lock, ArrowRight, UserCheck, ShieldAlert, BadgeCheck } from 'lucide-react';
 
+const getErrorMessage = (err: unknown, fallback: string) => {
+    if (err instanceof Error) return err.message;
+    if (typeof err === 'object' && err !== null) {
+        const maybeErrors = (err as { errors?: Array<{ message?: string }> }).errors;
+        if (Array.isArray(maybeErrors) && maybeErrors[0]?.message) {
+            return maybeErrors[0].message;
+        }
+    }
+    return fallback;
+};
+
 export default function Page() {
     const { isLoaded: isSignInLoaded, signIn, setActive: setSignInActive } = useSignIn();
     const { isLoaded: isSignUpLoaded, signUp, setActive: setSignUpActive } = useSignUp();
@@ -44,8 +55,8 @@ export default function Page() {
                     redirectUrlComplete: '/',
                 });
             }
-        } catch (err: any) {
-            setError(err.errors?.[0]?.message || 'OAuth redirect failed. Please try again.');
+        } catch (err: unknown) {
+            setError(getErrorMessage(err, 'OAuth redirect failed. Please try again.'));
         }
     };
 
@@ -76,8 +87,8 @@ export default function Page() {
             } else {
                 setError('Sign-in requires extra steps (e.g. MFA). Please complete on the Clerk panel or try Google/GitHub.');
             }
-        } catch (err: any) {
-            setError(err.errors?.[0]?.message || 'Incorrect email or password. Please try again.');
+        } catch (err: unknown) {
+            setError(getErrorMessage(err, 'Incorrect email or password. Please try again.'));
         } finally {
             setLoading(false);
         }
@@ -110,8 +121,8 @@ export default function Page() {
 
             await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
             setPendingVerification(true);
-        } catch (err: any) {
-            setError(err.errors?.[0]?.message || 'Sign-up failed. The email might be already taken.');
+        } catch (err: unknown) {
+            setError(getErrorMessage(err, 'Sign-up failed. The email might be already taken.'));
         } finally {
             setLoading(false);
         }
@@ -139,8 +150,8 @@ export default function Page() {
             } else {
                 setError('Verification did not complete. Please check the code and try again.');
             }
-        } catch (err: any) {
-            setError(err.errors?.[0]?.message || 'Invalid verification code. Please check and try again.');
+        } catch (err: unknown) {
+            setError(getErrorMessage(err, 'Invalid verification code. Please check and try again.'));
         } finally {
             setLoading(false);
         }
@@ -345,13 +356,15 @@ export default function Page() {
                                 >
                                     {loading ? (
                                         <div className="size-4.5 rounded-full border-2 border-t-white border-white/20 animate-spin" />
-                                    ) : (
-                                        <>
-                                            <span>{activeTab === 'signin' ? 'Sign In with Email' : 'Register Account'}</span>
-                                            <ArrowRight className="size-4" />
-                                        </>
-                                    )}
+                                     ) : (
+                                         <>
+                                             <span>{activeTab === 'signin' ? 'Sign In with Email' : 'Register Account'}</span>
+                                             <ArrowRight className="size-4" />
+                                         </>
+                                     )}
                                 </button>
+                                {/* Container for Clerk Smart CAPTCHA */}
+                                <div id="clerk-captcha" className="mt-2" />
                             </form>
 
                             {/* Divider */}

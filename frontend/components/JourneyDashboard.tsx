@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import type { Companion } from "@/types";
 import { cn } from "@/lib/utils";
 import CompanionsList from "@/components/CompanionsList";
-import { Bookmark, Clock, Bot, BarChart3, User, Sparkles, Trophy, CheckCircle, Brain, Calendar, ArrowUpRight, Flame, Mic } from "lucide-react";
+import { Bookmark, Clock, Bot, BarChart3, User, Sparkles, Trophy, Brain, ArrowUpRight, Flame, Mic } from "lucide-react";
 
 interface JourneyDashboardProps {
-  bookmarkedCompanions: any[];
-  sessionHistory: any[];
-  companions: any[];
+  bookmarkedCompanions: Companion[];
+  sessionHistory: Companion[];
+  companions: Companion[];
 }
 
 const JourneyDashboard = ({

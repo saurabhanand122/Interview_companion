@@ -79,14 +79,12 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
     const lottieRef = useRef<LottieRefCurrentProps>(null);
 
     useEffect(() => {
-        if(lottieRef) {
-            if(isSpeaking) {
-                lottieRef.current?.play()
-            } else {
-                lottieRef.current?.stop()
-            }
+        if (isSpeaking) {
+            lottieRef.current?.play();
+        } else {
+            lottieRef.current?.stop();
         }
-    }, [isSpeaking, lottieRef])
+    }, [isSpeaking]);
 
     useEffect(() => {
         const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
@@ -123,7 +121,7 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
             vapi.off('speech-start', onSpeechStart);
             vapi.off('speech-end', onSpeechEnd);
         }
-    }, []);
+    }, [companionId]);
 
     const toggleMicrophone = () => {
         const isMuted = vapi.isMuted();
@@ -140,7 +138,7 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
             serverMessages: [],
         }
 
-        // @ts-expect-error
+        // @ts-expect-error vapi.start signature mismatch
         vapi.start(configureAssistant(voice, style), assistantOverrides)
     }
 

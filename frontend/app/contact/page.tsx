@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Send, Sparkles, MapPin, Phone } from 'lucide-react';
 import { toast } from 'sonner';
 

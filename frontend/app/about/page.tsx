@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Brain, Cpu, MessageSquare, ShieldCheck, Sparkles, Star } from 'lucide-react';
-import Image from 'next/image';
 
 const features = [
   {
@@ -143,7 +142,7 @@ export default function AboutPage() {
             </div>
             
             <blockquote className="text-xs italic text-muted-foreground leading-relaxed">
-              "We wanted to build an interviewer tool that feels like a real human dialogue. By combining low-latency WebRTC streams with precise text-evaluation LLMs, we provide instant telemetry diagnostics."
+              &quot;We wanted to build an interviewer tool that feels like a real human dialogue. By combining low-latency WebRTC streams with precise text-evaluation LLMs, we provide instant telemetry diagnostics.&quot;
             </blockquote>
             
             <div className="border-t border-border pt-4 flex gap-4 text-xs font-bold text-primary">

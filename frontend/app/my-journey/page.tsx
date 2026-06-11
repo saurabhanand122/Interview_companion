@@ -45,7 +45,7 @@ const Profile = async () => {
               </div>
             </div>
             <p className="text-xs text-muted-foreground font-semibold">
-              Ready for your next mock interview? Let's practice.
+              Ready for your next mock interview? Let&apos;s practice.
             </p>
             <div className="flex items-center gap-1.5 text-xs font-extrabold text-emerald-500 mt-0.5">
               <Trophy className="size-3.5 animate-bounce" />

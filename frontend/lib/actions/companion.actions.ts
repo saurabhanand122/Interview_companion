@@ -36,9 +36,12 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }:
 
     const { data: companions, error } = await query;
 
-    if(error) throw new Error(error.message);
+    if(error) {
+        console.error('Supabase getAllCompanions error:', error.message);
+        return [];
+    }
 
-    return companions;
+    return companions ?? [];
 }
 
 export const getCompanion = async (id: string) => {
@@ -49,9 +52,12 @@ export const getCompanion = async (id: string) => {
         .select()
         .eq('id', id);
 
-    if(error) return console.log(error);
+    if(error) {
+        console.error('Supabase getCompanion error:', error.message);
+        return null;
+    }
 
-    return data[0];
+    return data?.[0] ?? null;
 }
 
 export const addToSessionHistory = async (companionId: string) => {
@@ -76,9 +82,12 @@ export const getRecentSessions = async (limit = 10) => {
         .order('created_at', { ascending: false })
         .limit(limit)
 
-    if(error) throw new Error(error.message);
+    if(error) {
+        console.error('Supabase getRecentSessions error:', error.message);
+        return [];
+    }
 
-    return data.map(({ companions }) => companions) as any;
+    return (data ?? []).map(({ companions }) => companions);
 }
 
 export const getUserSessions = async (userId: string, limit = 10) => {
@@ -90,9 +99,12 @@ export const getUserSessions = async (userId: string, limit = 10) => {
         .order('created_at', { ascending: false })
         .limit(limit)
 
-    if(error) throw new Error(error.message);
+    if(error) {
+        console.error('Supabase getUserSessions error:', error.message);
+        return [];
+    }
 
-    return data.map(({ companions }) => companions) as any;
+    return (data ?? []).map(({ companions }) => companions);
 }
 
 export const getUserCompanions = async (userId: string) => {
@@ -102,9 +114,12 @@ export const getUserCompanions = async (userId: string) => {
         .select()
         .eq('author', userId)
 
-    if(error) throw new Error(error.message);
+    if(error) {
+        console.error('Supabase getUserCompanions error:', error.message);
+        return [];
+    }
 
-    return data;
+    return data ?? [];
 }
 
 export const newCompanionPermissions = async () => {
@@ -180,8 +195,9 @@ export const getBookmarkedCompanions = async (userId: string) => {
     .select(`companions:companion_id (*)`) // Notice the (*) to get all the companion data
     .eq("user_id", userId);
   if (error) {
-    throw new Error(error.message);
+    console.error('Supabase getBookmarkedCompanions error:', error.message);
+    return [];
   }
   // We don't need the bookmarks data, so we return only the companions
-  return data.map(({ companions }) => companions) as any;
+  return (data ?? []).map(({ companions }) => companions);
 };

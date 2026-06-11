@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, Bot, ArrowRight, Mic, Brain, Sparkle, Trophy } from 'lucide-react';
+import { Sparkles, Bot, ArrowRight, Mic, Brain, Trophy } from 'lucide-react';
 
 export default function Hero() {
     const fadeInUp = {

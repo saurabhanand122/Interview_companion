@@ -100,7 +100,7 @@ export default function SuccessStories() {
 
             {/* Testimonial Story */}
             <p className="text-xs text-muted-foreground leading-relaxed font-semibold italic">
-              "{story.story}"
+              &quot;{story.story}&quot;
             </p>
           </motion.div>
         ))}

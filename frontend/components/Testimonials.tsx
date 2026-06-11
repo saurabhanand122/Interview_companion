@@ -39,7 +39,7 @@ export default function Testimonials() {
                     >
                         <p className="text-xs italic leading-relaxed text-muted-foreground font-semibold flex items-start gap-2">
                             <Quote className="size-4.5 text-violet-400 shrink-0 rotate-180 mt-0.5" />
-                            <span>"{t.quote}"</span>
+                            <span>&quot;{t.quote}&quot;</span>
                         </p>
                         <div className="flex items-center justify-between border-t border-border/30 pt-4 mt-1">
                             <div className="flex items-center gap-3">

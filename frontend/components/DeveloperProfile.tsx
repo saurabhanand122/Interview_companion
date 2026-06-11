@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BadgeCheck, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
+import { BadgeCheck, Github, Linkedin, Mail } from 'lucide-react';
 
 export default function DeveloperProfile() {
     return (

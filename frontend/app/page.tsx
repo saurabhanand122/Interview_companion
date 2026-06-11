@@ -21,7 +21,7 @@ export default async function Page() {
     if (user) {
         try {
             const bookmarks = await getBookmarkedCompanions(user.id);
-            bookmarkedIds = new Set(bookmarks.map((c: any) => c?.id).filter(Boolean));
+            bookmarkedIds = new Set(bookmarks.map((c) => c.id).filter(Boolean));
         } catch (err) {
             console.error("Failed to load user bookmarks on home page", err);
         }

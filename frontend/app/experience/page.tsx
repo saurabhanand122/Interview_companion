@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mic, Bot, Sparkles, Volume2, ShieldCheck, Flame } from 'lucide-react';
+import { Bot, Sparkles, Volume2, ShieldCheck, Flame } from 'lucide-react';
 import Image from 'next/image';
 
 const mockAvatars = [
